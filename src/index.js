@@ -39,17 +39,23 @@ breedSelect.addEventListener('change', event => {
   catInfo.style.display = 'none';
 
 
+
+
+
   const breed = event.target.value;
     fetchCatByBreed(breed)
         .then(data => {
           const catData = data.data[0].breeds[0];
+          
+          
 
           if (catData) {
             catInfo.innerHTML = `
           <p>${catData.name}</p>
           <p>${catData.description}</p>
           <p>${catData.temperament}</p>
-          <img src='${data.data[0].url}' >`;
+            <img src='${data.data[0].url}' >`;
+
           } else {
             catInfo.innerHTML = Notiflix.Notify.failure(
               'No information available for this breed'
